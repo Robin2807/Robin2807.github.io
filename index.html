@@ -1,0 +1,128 @@
+<html lang="nl">
+    <head>
+    
+    <title>Registreren of aanmelden</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <style id="common">
+        @font-face {
+            font-family: 'SegoeUI';
+            src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui.WOFF);
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'SegoeUI';
+            src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui_bold.WOFF);
+            font-weight: bold;
+        }
+        #AmazonExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/amazon.svg);
+        }
+        #AmazonExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/amazon.svg);
+        }
+        #FacebookExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/facebook.svg);
+        }
+        #FacebookExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/facebook.svg);
+        }
+        #GitHubExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg);
+        }
+        #GitHubExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg);
+        }
+        #AppleExchange,#AppleManagedExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/apple.svg);
+        }
+        #AppleExchange:hover,#AppleManagedExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/apple.svg);
+        }
+        #GoogleExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/google.svg);
+        }
+        #GoogleExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/google.svg);
+        }
+        #LinkedInExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/linkedin.svg);
+        }
+        #LinkedInExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/linkedin.svg);
+        }
+        #MicrosoftAccountExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/microsoft.svg);
+        }
+        #MicrosoftAccountExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/microsoft.svg);
+        }
+        #QQExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/qq.svg);
+        }
+        #QQExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/qq.svg);
+        }
+        #TwitterExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/twitter.svg);
+        }
+        #TwitterExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/twitter.svg);
+        }
+        #WeChatExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/wechat.svg);
+        }
+        #WeChatExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/wechat.svg);
+        }
+        #WeiboExchange {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/weibo.svg);
+        }
+        #WeiboExchange:hover {
+          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/weibo.svg);
+        }
+        .buttons #cancel:before {
+            content: url(https://cosunb2c.b2clogin.com/static/tenant/templates/images/left-arrow.svg);
+        }
+    </style>
+    <style id="idpselector">
+        #SignInWithLogonNameExchange, #SignUpWithLogonEmailExchange, #SignUpWithLogonNameExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/local.svg);
+        }
+        #SignInWithLogonNameExchange:hover, #SignUpWithLogonEmailExchange:hover, #SignUpWithLogonNameExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/local.svg);
+        }
+        #SignUpWithLogonEmailExchange.text-link {
+            background-image: none;
+            background-color: transparent !important;
+        }
+        #SignUpWithLogonEmailExchange.text-link:hover {
+            background-image: none;
+            background-color: transparent !important;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="background_branding_container" data-tenant-branding-background-color="true">
+            <img data-tenant-branding-background="true" alt="Illustratie" src="https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-pe92e-bodik-jfp-tv7lxweifm8leelynhk5ob-bf-e/logintenantbranding/0/illustration?ts=637172660499301143">
+        </div>
+        <div class="container  unified_container " role="presentation">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img class="companyLogo" data-tenant-branding-logo="true" alt="Bedrijfslogo">
+                            <div id="api" data-name="Unified" role="main">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
