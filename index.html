@@ -118,13 +118,14 @@
         display: none;
       }
 
-      .working {
+      #working {
         display: block;
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+        background: url("https://robin2807.github.io/working.gif") no-repeat;
         background-color: white !important;
         height: 100% !important;
         background-position: center !important;
@@ -141,11 +142,11 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div id="working" style="display: none;"></div>
                             <img class="companyLogo" data-tenant-branding-logo="true" alt="Bedrijfslogo">
                             <div id="api" data-name="SelfAsserted" role="main">
 
                             </div>
+                            <div id="working"></div>
                         </div>
                     </div>
                 </div>
@@ -189,7 +190,7 @@
   }
 
   function verifyCodeButtonPressed() {
-    const working = document.getElementsByClassName("working")[0];
+    const working = document.getElementsById("working");
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
@@ -202,13 +203,16 @@
       attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
       working.style.display = "none";
     } else {
-      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 2) {
+      const emailVerificationControlErrorMessage = document.getElementById("emailVerificationControl_error_message");
+      const errorMessageNotActive = emailVerificationControlErrorMessage.getAttribute("aria-hidden");
+
+      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 30 && errorMessageNotActive != "true") {
         attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
         setTimeout(function(){
           // Try again because it could be that the DOM wasn't ready
           console.log("try again");
           verifyCodeButtonPressed();
-        }, 1000)
+        }, 2000)
       } else {
         // Stop checking
         console.log("stop trying");
