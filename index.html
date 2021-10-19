@@ -194,6 +194,7 @@
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
+    console.log(userVerifiedCodeSuccessfully);
     
     if (userVerifiedCodeSuccessfully === true) {
       console.log("verify code button successfully")
