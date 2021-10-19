@@ -185,12 +185,12 @@
       hideChangeEmailSection();
       displayPasswordInputSection();
     } else {
-      console.log("verify code button not found")
+      console.log("code not successfully verified")
       if (attemptsToCheckIfCodeWasVerifiedSuccessfully < maxAttempts) {
         setTimeout(function() {
           attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
-          checkIfCodeWasVerifiedSuccessfully();
-        }, 2000)
+          verifyCodeButtonPressed();
+        }, 1000)
       }
     }
   }
