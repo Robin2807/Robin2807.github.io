@@ -193,7 +193,7 @@
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
-    const wait = delay => new Promise(resolve => setTimeout(resolve, delay));
+    let wait = delay => new Promise(resolve => setTimeout(resolve, delay));
     await wait(1000);
 
     const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
