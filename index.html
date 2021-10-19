@@ -117,6 +117,14 @@
       .helpLink {
         display: none;
       }
+
+      #working {
+        position: absolute;
+        height: 30px;
+        width: 1000px;
+        background-color: red;
+        display: none;
+      }
     </style>
     </head>
     <body>
@@ -129,6 +137,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-body">
+                            <div id="working"></div>
                             <img class="companyLogo" data-tenant-branding-logo="true" alt="Bedrijfslogo">
                             <div id="api" data-name="SelfAsserted" role="main">
 
@@ -175,41 +184,47 @@
     }
   }
 
-  function verifyCodeButtonPressed() {
+  async function verifyCodeButtonPressed() {
     console.log("verify code button pressed")
-    let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    const working = document.getElementById("working");
+    working.style.display = "block";
+
+    let userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully)
 
     if (userVerifiedCodeSuccessfully === true) {
       console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
+      working.style.display = "none";
     } else {
       console.log("code not successfully verified")
       // Check one more time after one second to make sure the DOM was ready
-      setTimeout(function() {
-        console.log("try again")
-        userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+      console.log("try again")
+      userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
 
-        if (userVerifiedCodeSuccessfully === true) {
-          console.log("verify code button successfully")
-          hideChangeEmailSection();
-          displayPasswordInputSection();
-        }
-      }, 1000)
+      if (userVerifiedCodeSuccessfully === true) {
+        console.log("verify code button successfully")
+        hideChangeEmailSection();
+        displayPasswordInputSection();
+      }
+
+      working.style.display = "none";
     }
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
-    const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
+    setTimeout(function() {
+      const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
 
-    if (emailVerificationCodeInputField !== null) {
-      const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
-      
-      return (ariaHiddenAttribute === "true") ? true : false;
-    } else {
-      return false;
-    }
+      if (emailVerificationCodeInputField !== null) {
+        const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
+        
+        return (ariaHiddenAttribute === "true") ? true : false;
+      } else {
+        return false;
+      }
+    }, 1000);
   }
 
   function hideChangeEmailSection() {
