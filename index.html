@@ -194,6 +194,7 @@
     hideChangeEmailSection();
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    console.log(userVerifiedCodeSuccessfully)
     
     if (userVerifiedCodeSuccessfully === true) {
       displayPasswordInputSection();
@@ -216,10 +217,10 @@
 
   function hideChangeEmailSection() {
     const emailInputField = document.getElementsByClassName("email_li")[0];
-    emailInputField.style.display = "none !important";
+    emailInputField.style.display = "none";
 
     const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
-    changeEmailBtn.style.display = "none !important";
+    changeEmailBtn.style.display = "none";
   }
 
   function displayPasswordInputSection() {
