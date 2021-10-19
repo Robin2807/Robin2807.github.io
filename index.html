@@ -223,14 +223,20 @@
 
     await setTimeout(function() {
       const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
+      console.log("emailVerificationCodeInputField:")
+      console.log(emailVerificationCodeInputField)
 
       if (emailVerificationCodeInputField !== null) {
         const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
+        console.log("ariaHiddenAttribute:")
+        console.log(ariaHiddenAttribute)
         
         codeVerifiedSuccessfully = (ariaHiddenAttribute === "true") ? true : false;
       } 
     }, 1000);
 
+    console.log("After:")
+    console.log(codeVerifiedSuccessfully)
     return codeVerifiedSuccessfully;
   }
 
