@@ -191,13 +191,13 @@
   function verifyCodeButtonPressed() {
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
-    hideChangeEmailSection();
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log("verifyCodeButtonPressed")
     console.log(userVerifiedCodeSuccessfully)
     
     if (userVerifiedCodeSuccessfully === true) {
+      hideChangeEmailSection();
       displayPasswordInputSection();
       attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
       working.style.display = "none";
@@ -205,10 +205,12 @@
       if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 2) {
         attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
         setTimeout(function(){
+          // Try again because it could be that the DOM wasn't ready
           console.log("try again");
           verifyCodeButtonPressed();
         }, 1000)
       } else {
+        // Stop checking
         console.log("stop trying");
         attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
         working.style.display = "none";
