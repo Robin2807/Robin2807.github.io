@@ -178,6 +178,7 @@
   function verifyCodeButtonPressed() {
     console.log("verify code button pressed")
     const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    console.log(userVerifiedCodeSuccessfully)
 
     if (userVerifiedCodeSuccessfully === true) {
       console.log("verify code button successfully")
@@ -198,7 +199,7 @@
     if (emailVerificationCodeInputField !== null) {
       const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
       
-      return ariaHiddenAttribute;
+      (ariaHiddenAttribute === "true") ? true : false;
     } else {
       return false;
     }
