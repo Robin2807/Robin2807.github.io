@@ -177,7 +177,7 @@
 
   function verifyCodeButtonPressed() {
     console.log("verify code button pressed")
-    const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully)
 
     if (userVerifiedCodeSuccessfully === true) {
@@ -186,9 +186,15 @@
       displayPasswordInputSection();
     } else {
       console.log("code not successfully verified")
-      // Execute one more time to make sure the DOM was ready
+      // Check one more time after one second to make sure the DOM was ready
       setTimeout(function() {
-        verifyCodeButtonPressed();
+        userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+
+        if (userVerifiedCodeSuccessfully === true) {
+          console.log("verify code button successfully")
+          hideChangeEmailSection();
+          displayPasswordInputSection();
+        }
       }, 1000)
     }
   }
