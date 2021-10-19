@@ -188,7 +188,7 @@
     }
   }
 
-  async function verifyCodeButtonPressed() {
+  function verifyCodeButtonPressed() {
     console.log("verify code button pressed")
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
@@ -200,24 +200,9 @@
       console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
-
-      working.style.display = "none";
-    } else {
-      console.log("code not successfully verified")
-      // Check one more time after one second to make sure the DOM was ready
-      console.log("try again")
-      setTimeout(function(){
-        userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
-
-        if (userVerifiedCodeSuccessfully === true) {
-          console.log("verify code button successfully")
-          hideChangeEmailSection();
-          displayPasswordInputSection();
-        }
-
-        working.style.display = "none";
-      }, 1000)
-    }
+    } 
+    
+    working.style.display = "none";
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
