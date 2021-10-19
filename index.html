@@ -164,8 +164,8 @@
   4. The password input fields can be displayed now
   */
 
-  const maxAttempts = 3
   let attemptsTosetEventListenerToVerificationBtn = 0;
+  let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
 
   setEventListenerToVerifyCodeButton();
 
@@ -179,7 +179,7 @@
       // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
       // Try again after two seconds if the maximum number of attempts to try isn't reached
 
-      if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
+      if (attemptsTosetEventListenerToVerificationBtn < 2) {
         setTimeout(function() {
           attemptsTosetEventListenerToVerificationBtn += 1;
           setEventListenerToVerifyCodeButton();
@@ -194,13 +194,26 @@
     hideChangeEmailSection();
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    console.log("verifyCodeButtonPressed")
     console.log(userVerifiedCodeSuccessfully)
     
     if (userVerifiedCodeSuccessfully === true) {
       displayPasswordInputSection();
-    } 
-
-    working.style.display = "none";
+      attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
+      working.style.display = "none";
+    } else {
+      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 2) {
+        attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
+        setTimeout(function(){
+          console.log("try again");
+          verifyCodeButtonPressed();
+        }, 1000)
+      } else {
+        console.log("stop trying");
+        attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
+        working.style.display = "none";
+      }
+    }
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
