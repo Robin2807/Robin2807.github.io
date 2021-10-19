@@ -168,7 +168,7 @@
       // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
       // Try again after two seconds if the maximum number of attempts to try isn't reached
 
-      if (attemptsTosetEventListenerToVerificationButton < maxAttempts) {
+      if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
         setTimeout(function() {
           attemptsTosetEventListenerToVerificationBtn += 1;
           setEventListenerToVerifyCodeButton();
