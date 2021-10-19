@@ -193,7 +193,7 @@
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
-    let userVerifiedCodeSuccessfullyPromise = await checkIfCodeWasVerifiedSuccessfully();
+    let userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
     
     if (userVerifiedCodeSuccessfully === true) {
       console.log("verify code button successfully")
