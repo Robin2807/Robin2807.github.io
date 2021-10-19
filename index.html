@@ -118,103 +118,6 @@
         display: none;
       }
     </style>
-    <script>
-      /* 
-      Fields to enter password are hidden default by styling. This fields has to be displayed when a user verified his code.
-    
-      1. Set an eventlistener to the verification button to listen if the button is pressed
-      2. When the button is pressed check if the verification code input field is hidden
-      3. If this field is hidden by the API, a user successfully verified  
-      4. The password input fields can be displayed now
-      */
-    
-      const maxAttempts = 3
-      let attemptsTosetEventListenerToVerificationBtn = 0;
-      let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
-    
-      document.ready = function () {
-        console.log("window.onload")
-        setEventListenerToVerifyCodeButton();
-      }
-    
-      function setEventListenerToVerifyCodeButton() {
-        const verifyCodeBtn = document.getElementById("emailVerificationControl_but_verify_code");
-        console.log("verifyCodeBtnElement:")
-        console.log(verifyCodeBtn)
-        
-        if (verifyCodeBtn !== null) {
-          console.log("add eventlistener to verify code btn")
-          verifyCodeBtn.addEventListener("click", verifyCodeButtonPressed());
-        } else {
-          // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
-          // Try again after two seconds if the maximum number of attempts to try isn't reached
-    
-          if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
-            console.log("try again to set event listener")
-            setTimeout(function() {
-              attemptsTosetEventListenerToVerificationBtn += 1;
-              setEventListenerToVerifyCodeButton();
-            }, 2000);
-          }
-        }
-      }
-    
-      function verifyCodeButtonPressed() {
-        const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
-    
-        if (userVerifiedCodeSuccessfully === true) {
-          hideChangeEmailSection();
-          displayPasswordInputSection();
-        } else {
-          if (attemptsToCheckIfCodeWasVerifiedSuccessfully < maxAttempts) {
-            setTimeout(function() {
-              attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
-              checkIfCodeWasVerifiedSuccessfully();
-            }, 2000)
-          }
-        }
-      }
-    
-      function checkIfCodeWasVerifiedSuccessfully() {
-        const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
-    
-        if (emailVerificationCodeInputField !== null) {
-    
-          const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
-    
-          if (ariaHiddenAttribute === "true") {
-            return true;
-          } else {
-            return false;
-          }
-    
-        } else {
-    
-          return false;
-    
-        }
-      }
-    
-      function hideChangeEmailSection() {
-        const emailInputField = document.getElementsByClassname("email_li")[0];
-        emailInputField.style.display = "none";
-    
-        const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
-        changeEmailBtn.style.display = "none";
-      }
-    
-      function displayPasswordInputArea() {
-        const passwordElements = document.getElementsByClassname("Password");
-        
-        for (let i=0; i < passwordElements.length; i++) {
-          const passwordElement = passwordElements[i];
-          passwordElement.style.display = "inline";
-        }
-    
-        const passwordContinueBtn = document.getElementById("continue");
-        passwordContinueBtn.style.display = "inline";
-      }
-    </script>
     </head>
     <body>
         <noscript><div id="no_js" ><div class="error_container"><div><h1>We can't sign you in</h1><p>Your browser is currently set to block JavaScript. You need to allow JavaScript to use this service.</p><p>To learn how to allow JavaScript or to find out whether your browser supports JavaScript, check the online help in your web browser.</p></div></div></div></noscript>
@@ -237,3 +140,98 @@
         </div>
     </body>
 </html>
+
+<script>
+  /* 
+  Fields to enter password are hidden default by styling. This fields has to be displayed when a user verified his code.
+
+  1. Set an eventlistener to the verification button to listen if the button is pressed
+  2. When the button is pressed check if the verification code input field is hidden
+  3. If this field is hidden by the API, a user successfully verified  
+  4. The password input fields can be displayed now
+  */
+
+  const maxAttempts = 3
+  let attemptsTosetEventListenerToVerificationBtn = 0;
+  let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
+
+  setEventListenerToVerifyCodeButton();
+
+  function setEventListenerToVerifyCodeButton() {
+    const verifyCodeBtn = document.getElementById("emailVerificationControl_but_verify_code");
+    console.log("verifyCodeBtnElement:")
+    console.log(verifyCodeBtn)
+    
+    if (verifyCodeBtn !== null) {
+      console.log("add eventlistener to verify code btn")
+      verifyCodeBtn.addEventListener("click", verifyCodeButtonPressed());
+    } else {
+      // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
+      // Try again after two seconds if the maximum number of attempts to try isn't reached
+
+      if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
+        console.log("try again to set event listener")
+        setTimeout(function() {
+          attemptsTosetEventListenerToVerificationBtn += 1;
+          setEventListenerToVerifyCodeButton();
+        }, 2000);
+      }
+    }
+  }
+
+  function verifyCodeButtonPressed() {
+    const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+
+    if (userVerifiedCodeSuccessfully === true) {
+      hideChangeEmailSection();
+      displayPasswordInputSection();
+    } else {
+      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < maxAttempts) {
+        setTimeout(function() {
+          attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
+          checkIfCodeWasVerifiedSuccessfully();
+        }, 2000)
+      }
+    }
+  }
+
+  function checkIfCodeWasVerifiedSuccessfully() {
+    const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
+
+    if (emailVerificationCodeInputField !== null) {
+
+      const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
+
+      if (ariaHiddenAttribute === "true") {
+        return true;
+      } else {
+        return false;
+      }
+
+    } else {
+
+      return false;
+
+    }
+  }
+
+  function hideChangeEmailSection() {
+    const emailInputField = document.getElementsByClassname("email_li")[0];
+    emailInputField.style.display = "none";
+
+    const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
+    changeEmailBtn.style.display = "none";
+  }
+
+  function displayPasswordInputArea() {
+    const passwordElements = document.getElementsByClassname("Password");
+    
+    for (let i=0; i < passwordElements.length; i++) {
+      const passwordElement = passwordElements[i];
+      passwordElement.style.display = "inline";
+    }
+
+    const passwordContinueBtn = document.getElementById("continue");
+    passwordContinueBtn.style.display = "inline";
+  }
+</script>
