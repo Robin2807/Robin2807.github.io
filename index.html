@@ -159,18 +159,15 @@
 
   function setEventListenerToVerifyCodeButton() {
     const verifyCodeBtn = document.getElementById("emailVerificationControl_but_verify_code");
-    console.log("verifyCodeBtnElement:")
-    console.log(verifyCodeBtn)
     
     if (verifyCodeBtn !== null) {
-      console.log("add eventlistener to verify code btn")
+      console.log("add eventlistener to button")
       verifyCodeBtn.addEventListener("click", verifyCodeButtonPressed());
     } else {
       // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
       // Try again after two seconds if the maximum number of attempts to try isn't reached
 
       if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
-        console.log("try again to set event listener")
         setTimeout(function() {
           attemptsTosetEventListenerToVerificationBtn += 1;
           setEventListenerToVerifyCodeButton();
@@ -180,12 +177,15 @@
   }
 
   function verifyCodeButtonPressed() {
+    console.log("verify code button pressed")
     const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
 
     if (userVerifiedCodeSuccessfully === true) {
+      console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
     } else {
+      console.log("verify code button not found")
       if (attemptsToCheckIfCodeWasVerifiedSuccessfully < maxAttempts) {
         setTimeout(function() {
           attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
@@ -202,7 +202,7 @@
 
       const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
 
-      if (ariaHiddenAttribute === "true") {
+      if (ariaHiddenAttribute === true) {
         return true;
       } else {
         return false;
