@@ -219,17 +219,19 @@
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
+    let codeVerifiedSuccessfully = false;
+
     setTimeout(function() {
       const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
 
       if (emailVerificationCodeInputField !== null) {
         const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
         
-        return (ariaHiddenAttribute === "true") ? true : false;
-      } else {
-        return false;
-      }
+        codeVerifiedSuccessfully = (ariaHiddenAttribute === "true") ? true : false;
+      } 
     }, 1000);
+
+    return codeVerifiedSuccessfully;
   }
 
   function hideChangeEmailSection() {
