@@ -219,7 +219,7 @@
   }
 
   async function checkIfCodeWasVerifiedSuccessfully() {
-    const codeVerifiedSuccesfully = await setTimeout(function() {
+    const codeVerifiedSuccessfully = await setTimeout(function() {
       const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
       console.log("emailVerificationCodeInputField:")
       console.log(emailVerificationCodeInputField)
@@ -236,7 +236,7 @@
     }, 1000);
 
     console.log("After:")
-    console.log(codeVerifiedSuccesfully);
+    console.log(codeVerifiedSuccessfully);
     return codeVerifiedSuccessfully;
   }
 
