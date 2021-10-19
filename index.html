@@ -209,6 +209,7 @@
       if (ariaHiddenAttribute == "false") {
         hideChangeEmailSection();
         displayPasswordInputSection();
+        observeUserAlreadyExistsMessage()
         changeEmailBtnObserver.disconnect();
       }
     });
@@ -227,6 +228,7 @@
       if (ariaHiddenAttribute == "false") {
         displayChangeEmailSection();
         hidePasswordInputSection();
+        observeChangeEmailButton();
         userAlreadyExistsMessageObserver.disconnect();
       }
     });
@@ -237,5 +239,5 @@
     });
   }
 
-
+  observeChangeEmailButton();
 </script>
