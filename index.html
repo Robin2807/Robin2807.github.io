@@ -193,29 +193,33 @@
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
-    let userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
-    console.log(userVerifiedCodeSuccessfully)
+    let userVerifiedCodeSuccessfullyPromise = await checkIfCodeWasVerifiedSuccessfully();
 
-    if (userVerifiedCodeSuccessfully === true) {
-      console.log("verify code button successfully")
-      hideChangeEmailSection();
-      displayPasswordInputSection();
-
-      working.style.display = "none";
-    } else {
-      console.log("code not successfully verified")
-      // Check one more time after one second to make sure the DOM was ready
-      console.log("try again")
-      userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
+    // Resolve promise
+    userVerifiedCodeSuccessfullyPromise.then(function(userVerifiedCodeSuccessfully) {
+      console.log(userVerifiedCodeSuccessfully)
 
       if (userVerifiedCodeSuccessfully === true) {
         console.log("verify code button successfully")
         hideChangeEmailSection();
         displayPasswordInputSection();
-      }
 
-      working.style.display = "none";
-    }
+        working.style.display = "none";
+      } else {
+        console.log("code not successfully verified")
+        // Check one more time after one second to make sure the DOM was ready
+        console.log("try again")
+        userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
+
+        if (userVerifiedCodeSuccessfully === true) {
+          console.log("verify code button successfully")
+          hideChangeEmailSection();
+          displayPasswordInputSection();
+        }
+
+        working.style.display = "none";
+      }
+    });
   }
 
   async function checkIfCodeWasVerifiedSuccessfully() {
