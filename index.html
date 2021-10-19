@@ -196,7 +196,7 @@
     let wait = delay => new Promise(resolve => setTimeout(resolve, delay));
     await wait(1000);
 
-    const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+    let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully);
     
     if (userVerifiedCodeSuccessfully === true) {
