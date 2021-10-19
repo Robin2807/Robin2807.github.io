@@ -219,9 +219,7 @@
   }
 
   async function checkIfCodeWasVerifiedSuccessfully() {
-    let codeVerifiedSuccessfully = false;
-
-    await setTimeout(function() {
+    const codeVerifiedSuccesfully = await setTimeout(function() {
       const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
       console.log("emailVerificationCodeInputField:")
       console.log(emailVerificationCodeInputField)
@@ -231,12 +229,14 @@
         console.log("ariaHiddenAttribute:")
         console.log(ariaHiddenAttribute)
         
-        codeVerifiedSuccessfully = (ariaHiddenAttribute === "true") ? true : false;
-      } 
+        return (ariaHiddenAttribute === "true") ? true : false;
+      }  else {
+        return false;
+      }
     }, 1000);
 
     console.log("After:")
-    console.log(codeVerifiedSuccessfully)
+    console.log(codeVerifiedSuccesfully);
     return codeVerifiedSuccessfully;
   }
 
