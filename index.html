@@ -194,6 +194,7 @@
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfullyPromise = await checkIfCodeWasVerifiedSuccessfully();
+    console.log(userVerifiedCodeSuccessfullyPromise);
 
     // Resolve promise
     userVerifiedCodeSuccessfullyPromise.then(function(userVerifiedCodeSuccessfully) {
