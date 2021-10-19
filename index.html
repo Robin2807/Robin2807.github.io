@@ -167,113 +167,75 @@
   4. The password input fields can be displayed now
   */
 
-  /*
-  let attemptsTosetEventListenerToVerificationBtn = 0;
-  let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
+  const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims"); // Prod: email_ver_but_edit
+  const emailInputField = document.getElementsByClassName("EmailBox")[0];
+  const passwordElements = document.getElementsByClassName("Password");
+  const passwordContinueBtn = document.getElementById("continue");
+  const userAlreadyExistsMessage = document.getElementById("claimVerificationServerError");
 
-  setEventListenerToVerifyCodeButton();
-
-  function setEventListenerToVerifyCodeButton() {
-    const verifyCodeBtn = document.getElementById("emailVerificationControl_but_verify_code");
-    
-    if (verifyCodeBtn !== null) {
-      console.log("add eventlistener to button")
-      verifyCodeBtn.addEventListener("click", verifyCodeButtonPressed);
-    } else {
-      // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
-      // Try again after two seconds if the maximum number of attempts to try isn't reached
-
-      if (attemptsTosetEventListenerToVerificationBtn < 2) {
-        setTimeout(function() {
-          attemptsTosetEventListenerToVerificationBtn += 1;
-          setEventListenerToVerifyCodeButton();
-        }, 2000);
-      }
-    }
+  function displayChangeEmailSection() {
+    emailInputField.style.display = "none";
+    changeEmailBtn.style.display = "none";
   }
-
-  function verifyCodeButtonPressed() {
-    const working = document.getElementById("working");
-    working.style.display = "block";
-
-    let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
-    console.log("verifyCodeButtonPressed")
-    console.log(userVerifiedCodeSuccessfully)
-    
-    if (userVerifiedCodeSuccessfully === true) {
-      hideChangeEmailSection();
-      displayPasswordInputSection();
-      attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
-      working.style.display = "none";
-    } else {
-      const emailVerificationControlErrorMessage = document.getElementById("emailVerificationControl_error_message");
-      const errorMessageNotActive = emailVerificationControlErrorMessage.getAttribute("aria-hidden");
-      console.log(errorMessageNotActive);
-
-      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 30 && errorMessageNotActive == "true") {
-        attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
-        setTimeout(function(){
-          // Try again because it could be that the DOM wasn't ready
-          console.log("try again");
-          verifyCodeButtonPressed();
-        }, 2000)
-      } else {
-        // Stop checking
-        console.log("stop trying");
-        attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
-        working.style.display = "none";
-      }
-    }
-  }
-
-  function checkIfCodeWasVerifiedSuccessfully() {
-    const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
-
-    if (emailVerificationCodeInputField !== null) {
-      const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
-      
-      return (ariaHiddenAttribute === "true") ? true : false;
-    }  else {
-      return false;
-    }
-  }
-  */
 
   function hideChangeEmailSection() {
-    const emailInputField = document.getElementsByClassName("email_li")[0];
     emailInputField.style.display = "none";
-
-    const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
     changeEmailBtn.style.display = "none";
   }
 
   function displayPasswordInputSection() {
-    const passwordElements = document.getElementsByClassName("Password");
-    
     for (let i=0; i < passwordElements.length; i++) {
       const passwordElement = passwordElements[i];
       passwordElement.style.display = "inline";
     }
 
-    const passwordContinueBtn = document.getElementById("continue");
     passwordContinueBtn.style.display = "inline";
   }
 
-  const changeEmailBtn = document.getElementById('emailVerificationControl_but_change_claims');
-
-  const observer = new MutationObserver(function(mutations) {
-    const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
-    console.log(ariaHiddenAttribute);
-
-    if (ariaHiddenAttribute == "false") {
-      hideChangeEmailSection();
-      displayPasswordInputSection();
+  function hidePasswordInputSection() {
+    for (let i=0; i < passwordElements.length; i++) {
+      const passwordElement = passwordElements[i];
+      passwordElement.style.display = "none";
     }
-  });
 
-  observer.observe(changeEmailBtn, { 
-    attributes: true, 
-    attributeFilter: ['aria-hidden'] 
-  });
+    passwordContinueBtn.style.display = "none";
+  }
+
+  function observeChangeEmailButton() {
+    const changeEmailBtnObserver = new MutationObserver(function(mutations) {
+      const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
+      console.log(ariaHiddenAttribute);
+
+      if (ariaHiddenAttribute == "false") {
+        hideChangeEmailSection();
+        displayPasswordInputSection();
+        changeEmailBtnObserver.disconnect();
+      }
+    });
+
+    changeEmailBtnObserver.observe(changeEmailBtn, { 
+      attributes: true, 
+      attributeFilter: ['aria-hidden'] 
+    });
+  }
+
+  function observeUserAlreadyExistsMessage() {
+    const userAlreadyExistsMessageObserver = new MutationObserver(function(mutations) {
+      const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
+      console.log(ariaHiddenAttribute);
+
+      if (ariaHiddenAttribute == "false") {
+        displayChangeEmailSection();
+        hidePasswordInputSection();
+        userAlreadyExistsMessageObserver.disconnect();
+      }
+    });
+
+    userAlreadyExistsMessageObserver.observe(userAlreadyExistsMessage, { 
+      attributes: true, 
+      attributeFilter: ['aria-hidden'] 
+    });
+  }
+
 
 </script>
