@@ -176,11 +176,13 @@
   function displayChangeEmailSection() {
     emailInputField.style.display = "none";
     changeEmailBtn.style.display = "none";
+    changeEmailBtn.setAttribute("aria-hidden", "false");
   }
 
   function hideChangeEmailSection() {
     emailInputField.style.display = "none";
     changeEmailBtn.style.display = "none";
+    changeEmailBtn.setAttribute("aria-hidden", "true");
   }
 
   function displayPasswordInputSection() {
@@ -222,7 +224,7 @@
 
   function observeUserAlreadyExistsMessage() {
     const userAlreadyExistsMessageObserver = new MutationObserver(function(mutations) {
-      const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
+      const ariaHiddenAttribute = userAlreadyExistsMessage.getAttribute("aria-hidden");
       console.log(ariaHiddenAttribute);
 
       if (ariaHiddenAttribute == "false") {
