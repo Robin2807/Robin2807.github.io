@@ -188,6 +188,7 @@
       console.log("code not successfully verified")
       // Check one more time after one second to make sure the DOM was ready
       setTimeout(function() {
+        console.log("try again")
         userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
 
         if (userVerifiedCodeSuccessfully === true) {
