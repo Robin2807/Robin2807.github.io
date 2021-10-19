@@ -193,8 +193,6 @@
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
-    await wait(1000);
-
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully);
     
@@ -205,19 +203,20 @@
 
       working.style.display = "none";
     } else {
-      await wait(1000);
       console.log("code not successfully verified")
       // Check one more time after one second to make sure the DOM was ready
       console.log("try again")
-      userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
+      setTimeout(function(){
+        userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
 
-      if (userVerifiedCodeSuccessfully === true) {
-        console.log("verify code button successfully")
-        hideChangeEmailSection();
-        displayPasswordInputSection();
-      }
+        if (userVerifiedCodeSuccessfully === true) {
+          console.log("verify code button successfully")
+          hideChangeEmailSection();
+          displayPasswordInputSection();
+        }
 
-      working.style.display = "none";
+        working.style.display = "none";
+      }, 1000)
     }
   }
 
