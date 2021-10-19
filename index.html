@@ -153,7 +153,6 @@
 
   const maxAttempts = 3
   let attemptsTosetEventListenerToVerificationBtn = 0;
-  let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
 
   setEventListenerToVerifyCodeButton();
 
@@ -186,12 +185,10 @@
       displayPasswordInputSection();
     } else {
       console.log("code not successfully verified")
-      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < maxAttempts) {
-        setTimeout(function() {
-          attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
-          verifyCodeButtonPressed();
-        }, 1000)
-      }
+      // Execute one more time to make sure the DOM was ready
+      setTimeout(function() {
+        verifyCodeButtonPressed();
+      }, 1000)
     }
   }
 
@@ -199,19 +196,11 @@
     const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
 
     if (emailVerificationCodeInputField !== null) {
-
       const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
-
-      if (ariaHiddenAttribute === true) {
-        return true;
-      } else {
-        return false;
-      }
-
+      
+      return ariaHiddenAttribute;
     } else {
-
       return false;
-
     }
   }
 
