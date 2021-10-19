@@ -203,22 +203,9 @@
         console.log("verify code button successfully")
         hideChangeEmailSection();
         displayPasswordInputSection();
+      } 
 
-        working.style.display = "none";
-      } else {
-        console.log("code not successfully verified")
-        // Check one more time after one second to make sure the DOM was ready
-        console.log("try again")
-        userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
-
-        if (userVerifiedCodeSuccessfully === true) {
-          console.log("verify code button successfully")
-          hideChangeEmailSection();
-          displayPasswordInputSection();
-        }
-
-        working.style.display = "none";
-      }
+      working.style.display = "none";
     });
   }
 
