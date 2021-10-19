@@ -119,7 +119,7 @@
       }
 
       #working {
-        display: block;
+        display: none;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -190,7 +190,7 @@
   }
 
   function verifyCodeButtonPressed() {
-    const working = document.getElementsById("working");
+    const working = document.getElementById("working");
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
