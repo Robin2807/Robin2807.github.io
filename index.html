@@ -188,65 +188,38 @@
     }
   }
 
-  async function verifyCodeButtonPressed() {
-    console.log("verify code button pressed")
+  function verifyCodeButtonPressed() {
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
-
-    let wait = delay => new Promise(resolve => setTimeout(resolve, delay));
-    // await wait(1000);
+    hideChangeEmailSection();
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
-    console.log(userVerifiedCodeSuccessfully);
     
     if (userVerifiedCodeSuccessfully === true) {
-      console.log("verify code button successfully")
-      hideChangeEmailSection();
       displayPasswordInputSection();
-      working.style.display = "none";
-    } else {
-      // await wait(2000);
+    } 
 
-      userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
-
-      if(userVerifiedCodeSuccessfully === true) {
-        console.log("verify code button successfully (second)")
-        hideChangeEmailSection();
-        displayPasswordInputSection();
-        working.style.display = "none";
-      }
-    }
+    working.style.display = "none";
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
-    const codeVerifiedSuccessfully = false;
-
     const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
-    console.log("emailVerificationCodeInputField:")
-    console.log(emailVerificationCodeInputField)
 
     if (emailVerificationCodeInputField !== null) {
       const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
-      console.log("ariaHiddenAttribute:")
-      console.log(ariaHiddenAttribute)
       
       return (ariaHiddenAttribute === "true") ? true : false;
     }  else {
       return false;
     }
-
-    console.log("After:")
-    console.log(codeVerifiedSuccessfully);
-
-    return codeVerifiedSuccessfully;
   }
 
   function hideChangeEmailSection() {
     const emailInputField = document.getElementsByClassName("email_li")[0];
-    emailInputField.style.display = "none";
+    emailInputField.style.display = "none !important";
 
     const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
-    changeEmailBtn.style.display = "none";
+    changeEmailBtn.style.display = "none !important";
   }
 
   function displayPasswordInputSection() {
