@@ -194,20 +194,27 @@
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfullyPromise = await checkIfCodeWasVerifiedSuccessfully();
-    console.log(userVerifiedCodeSuccessfullyPromise);
+    
+    if (userVerifiedCodeSuccessfully === true) {
+      console.log("verify code button successfully")
+      hideChangeEmailSection();
+      displayPasswordInputSection();
 
-    // Resolve promise
-    userVerifiedCodeSuccessfullyPromise.then(function(userVerifiedCodeSuccessfully) {
-      console.log(userVerifiedCodeSuccessfully)
+      working.style.display = "none";
+    } else {
+      console.log("code not successfully verified")
+      // Check one more time after one second to make sure the DOM was ready
+      console.log("try again")
+      userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
 
       if (userVerifiedCodeSuccessfully === true) {
         console.log("verify code button successfully")
         hideChangeEmailSection();
         displayPasswordInputSection();
-      } 
+      }
 
       working.style.display = "none";
-    });
+    }
   }
 
   async function checkIfCodeWasVerifiedSuccessfully() {
@@ -221,7 +228,7 @@
         
         codeVerifiedSuccessfully = (ariaHiddenAttribute === "true") ? true : false;
       } 
-    }, 1200);
+    }, 1000);
 
     return codeVerifiedSuccessfully;
   }
