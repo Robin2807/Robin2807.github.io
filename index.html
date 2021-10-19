@@ -262,10 +262,10 @@
   const changeEmailBtn = document.getElementById('emailVerificationControl_but_change_claims');
 
   const observer = new MutationObserver(function(mutations) {
-    const areaHiddenAttribute = changeEmailBtn.getAttribute("area-hidden");
-    console.log(areaHiddenAttribute);
+    const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
+    console.log(ariaHiddenAttribute);
 
-    if (areaHiddenAttribute == "false") {
+    if (ariaHiddenAttribute == "false") {
       hideChangeEmailSection();
       displayPasswordInputSection();
     }
@@ -273,7 +273,7 @@
 
   observer.observe(changeEmailBtn, { 
     attributes: true, 
-    attributeFilter: ['area-hidden'] 
+    attributeFilter: ['aria-hidden'] 
   });
 
 </script>
