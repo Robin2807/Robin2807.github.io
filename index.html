@@ -194,7 +194,7 @@
     working.style.display = "block";
 
     let wait = delay => new Promise(resolve => setTimeout(resolve, delay));
-    await wait(1000);
+    // await wait(1000);
 
     let userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully);
@@ -205,7 +205,7 @@
       displayPasswordInputSection();
       working.style.display = "none";
     } else {
-      await wait(3000);
+      // await wait(2000);
 
       userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
 
