@@ -106,7 +106,7 @@
         }
     </style>
     <style id="customstyling">
-      /*
+      
       .Password {
         display: none;
       }
@@ -118,7 +118,7 @@
       .helpLink {
         display: none;
       }
-      */
+     
 
       #working {
         display: none;
@@ -237,6 +237,7 @@
       return false;
     }
   }
+  */
 
   function hideChangeEmailSection() {
     const emailInputField = document.getElementsByClassName("email_li")[0];
@@ -257,5 +258,21 @@
     const passwordContinueBtn = document.getElementById("continue");
     passwordContinueBtn.style.display = "inline";
   }
-  */
+
+  const changeEmailBtn = document.getElementById('emailVerificationControl_but_change_claims');
+
+  const observer = new MutationObserver(function(mutations) {
+    const areaHiddenAttribute = changeEmailBtn.getAttribute("area-hidden");
+
+    if (areaHiddenAttribute == "false") {
+      hideChangeEmailSection();
+      displayPasswordInputSection();
+    }
+  });
+
+  observer.observe(changeEmailBtn, { 
+    attributes: true, 
+    attributeFilter: ['area-hidden'] 
+  });
+
 </script>
