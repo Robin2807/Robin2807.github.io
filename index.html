@@ -218,10 +218,10 @@
     }
   }
 
-  function checkIfCodeWasVerifiedSuccessfully() {
+  async function checkIfCodeWasVerifiedSuccessfully() {
     let codeVerifiedSuccessfully = false;
 
-    setTimeout(function() {
+    await setTimeout(function() {
       const emailVerificationCodeInputField = document.getElementsByClassName("emailVerificationCode_li")[0];
 
       if (emailVerificationCodeInputField !== null) {
