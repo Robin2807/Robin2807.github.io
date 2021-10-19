@@ -206,7 +206,7 @@
       const emailVerificationControlErrorMessage = document.getElementById("emailVerificationControl_error_message");
       const errorMessageNotActive = emailVerificationControlErrorMessage.getAttribute("aria-hidden");
 
-      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 30 && errorMessageNotActive != "true") {
+      if (attemptsToCheckIfCodeWasVerifiedSuccessfully < 30 && errorMessageNotActive == "true") {
         attemptsToCheckIfCodeWasVerifiedSuccessfully += 1;
         setTimeout(function(){
           // Try again because it could be that the DOM wasn't ready
