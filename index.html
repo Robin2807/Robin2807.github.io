@@ -203,8 +203,9 @@
       console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
+      working.style.display = "none";
     } else {
-      await wait(1000);
+      await wait(3000);
 
       userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
 
@@ -212,10 +213,9 @@
         console.log("verify code button successfully (second)")
         hideChangeEmailSection();
         displayPasswordInputSection();
+        working.style.display = "none";
       }
     }
-    
-    working.style.display = "none";
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
