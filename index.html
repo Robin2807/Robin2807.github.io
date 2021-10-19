@@ -156,19 +156,24 @@
   let attemptsToCheckIfCodeWasVerifiedSuccessfully = 0;
 
   window.onload = function () {
+    console.log("window.onload")
     setEventListenerToVerifyCodeButton();
   }
 
   function setEventListenerToVerifyCodeButton() {
     const verifyCodeBtn = document.getElementById("emailVerificationControl_but_verify_code");
+    console.log("verifyCodeBtnElement:")
+    console.log(verifyCodeBtn)
     
     if (verifyCodeBtn !== null) {
+      console.log("add eventlistener to verify code btn")
       verifyCodeBtn.addEventListener("click", verifyCodeButtonPressed());
     } else {
       // If no verify code button is found, it could be that the API hasn't add it to the DOM yet
       // Try again after two seconds if the maximum number of attempts to try isn't reached
 
       if (attemptsTosetEventListenerToVerificationBtn < maxAttempts) {
+        console.log("try again to set event listener")
         setTimeout(function() {
           attemptsTosetEventListenerToVerificationBtn += 1;
           setEventListenerToVerifyCodeButton();
