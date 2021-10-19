@@ -199,7 +199,7 @@
     if (emailVerificationCodeInputField !== null) {
       const ariaHiddenAttribute = emailVerificationCodeInputField.getAttribute("aria-hidden");
       
-      (ariaHiddenAttribute === "true") ? true : false;
+      return (ariaHiddenAttribute === "true") ? true : false;
     } else {
       return false;
     }
