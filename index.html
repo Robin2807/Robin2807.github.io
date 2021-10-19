@@ -193,16 +193,26 @@
     const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
-    let userVerifiedCodeSuccessfully = await setTimeout(function() {
-      return checkIfCodeWasVerifiedSuccessfully();
-    }, 1100);
+    await wait(1000);
+
+    const userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
     console.log(userVerifiedCodeSuccessfully);
     
     if (userVerifiedCodeSuccessfully === true) {
       console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
-    } 
+    } else {
+      await wait(1000);
+      
+      userVerifiedCodeSuccessfully = checkIfCodeWasVerifiedSuccessfully();
+
+      if(userVerifiedCodeSuccessfully === true) {
+        console.log("verify code button successfully (second)")
+        hideChangeEmailSection();
+        displayPasswordInputSection();
+      }
+    }
     
     working.style.display = "none";
   }
@@ -249,4 +259,6 @@
     const passwordContinueBtn = document.getElementById("continue");
     passwordContinueBtn.style.display = "inline";
   }
+
+  const wait = delay => new Promise(resolve => setTimeout(resolve, delay));
 </script>
