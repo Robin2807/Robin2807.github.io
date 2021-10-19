@@ -118,11 +118,16 @@
         display: none;
       }
 
-      #working {
+      .working {
+        display: block;
         position: absolute;
-        height: 30px;
-        width: 1000px;
-        background-color: red;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        height: 100%;
+        background-position: center !important;
       }
     </style>
     </head>
@@ -185,7 +190,7 @@
 
   async function verifyCodeButtonPressed() {
     console.log("verify code button pressed")
-    const working = document.getElementById("working");
+    const working = document.getElementsByClassName("working")[0];
     working.style.display = "block";
 
     let userVerifiedCodeSuccessfully = await checkIfCodeWasVerifiedSuccessfully();
@@ -195,6 +200,8 @@
       console.log("verify code button successfully")
       hideChangeEmailSection();
       displayPasswordInputSection();
+
+      working.style.display = "none";
     } else {
       console.log("code not successfully verified")
       // Check one more time after one second to make sure the DOM was ready
@@ -206,9 +213,9 @@
         hideChangeEmailSection();
         displayPasswordInputSection();
       }
-    }
 
-    working.style.display = "block";
+      working.style.display = "none";
+    }
   }
 
   function checkIfCodeWasVerifiedSuccessfully() {
