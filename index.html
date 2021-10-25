@@ -1,138 +1,124 @@
-<html lang="nl">
+<html>
     <head>
-    
-    <title>Registreren of aanmelden</title>
+        <title lang="nl">Gebruikersdetails</title>
+        <title lang="en">User details</title>
+        <title lang="de">Nutzerdetails</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://robin2807.github.io/style.css">
-    <style id="common">
-        @font-face {
-            font-family: 'SegoeUI';
-            src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui.WOFF);
-            font-weight: normal;
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://robin2807.github.io/style.css">
+        <style id="common">
+            @font-face {
+                font-family: 'SegoeUI';
+                src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui.WOFF);
+                font-weight: normal;
+            }
+            @font-face {
+                font-family: 'SegoeUI';
+                src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui_bold.WOFF);
+                font-weight: bold;
+            }
+            #AmazonExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/amazon.svg);
+            }
+            #AmazonExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/amazon.svg);
+            }
+            #FacebookExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/facebook.svg);
+            }
+            #FacebookExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/facebook.svg);
+            }
+            #GitHubExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg);
+            }
+            #GitHubExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg);
+            }
+            #AppleExchange,#AppleManagedExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/apple.svg);
+            }
+            #AppleExchange:hover,#AppleManagedExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/apple.svg);
+            }
+            #GoogleExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/google.svg);
+            }
+            #GoogleExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/google.svg);
+            }
+            #LinkedInExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/linkedin.svg);
+            }
+            #LinkedInExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/linkedin.svg);
+            }
+            #MicrosoftAccountExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/microsoft.svg);
+            }
+            #MicrosoftAccountExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/microsoft.svg);
+            }
+            #QQExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/qq.svg);
+            }
+            #QQExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/qq.svg);
+            }
+            #TwitterExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/twitter.svg);
+            }
+            #TwitterExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/twitter.svg);
+            }
+            #WeChatExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/wechat.svg);
+            }
+            #WeChatExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/wechat.svg);
+            }
+            #WeiboExchange {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/weibo.svg);
+            }
+            #WeiboExchange:hover {
+            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/weibo.svg);
+            }
+            .buttons #cancel:before {
+                content: url(https://cosunb2c.b2clogin.com/static/tenant/templates/images/left-arrow.svg);
+            }
+        </style>
+        <style id="idpselector">
+            #SignInWithLogonNameExchange, #SignUpWithLogonEmailExchange, #SignUpWithLogonNameExchange {
+                background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/local.svg);
+            }
+            #SignInWithLogonNameExchange:hover, #SignUpWithLogonEmailExchange:hover, #SignUpWithLogonNameExchange:hover {
+                background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/local.svg);
+            }
+            #SignUpWithLogonEmailExchange.text-link {
+                background-image: none;
+                background-color: transparent !important;
+            }
+            #SignUpWithLogonEmailExchange.text-link:hover {
+                background-image: none;
+                background-color: transparent !important;
+            }
+        </style>
+        <style id="customstyling">
+        #continue {
+            display: none;
         }
-        @font-face {
-            font-family: 'SegoeUI';
-            src: url(https://cosunb2c.b2clogin.com/static/tenant/templates/fonts/segoeui_bold.WOFF);
-            font-weight: bold;
-        }
-        #AmazonExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/amazon.svg);
-        }
-        #AmazonExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/amazon.svg);
-        }
-        #FacebookExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/facebook.svg);
-        }
-        #FacebookExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/facebook.svg);
-        }
-        #GitHubExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/github.svg);
-        }
-        #GitHubExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/github.svg);
-        }
-        #AppleExchange,#AppleManagedExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/apple.svg);
-        }
-        #AppleExchange:hover,#AppleManagedExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/apple.svg);
-        }
-        #GoogleExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/google.svg);
-        }
-        #GoogleExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/google.svg);
-        }
-        #LinkedInExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/linkedin.svg);
-        }
-        #LinkedInExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/linkedin.svg);
-        }
-        #MicrosoftAccountExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/microsoft.svg);
-        }
-        #MicrosoftAccountExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/microsoft.svg);
-        }
-        #QQExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/qq.svg);
-        }
-        #QQExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/qq.svg);
-        }
-        #TwitterExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/twitter.svg);
-        }
-        #TwitterExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/twitter.svg);
-        }
-        #WeChatExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/wechat.svg);
-        }
-        #WeChatExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/wechat.svg);
-        }
-        #WeiboExchange {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/weibo.svg);
-        }
-        #WeiboExchange:hover {
-          background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/weibo.svg);
-        }
-        .buttons #cancel:before {
-            content: url(https://cosunb2c.b2clogin.com/static/tenant/templates/images/left-arrow.svg);
-        }
-    </style>
-    <style id="idpselector">
-        #SignInWithLogonNameExchange, #SignUpWithLogonEmailExchange, #SignUpWithLogonNameExchange {
-            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/colored/local.svg);
-        }
-        #SignInWithLogonNameExchange:hover, #SignUpWithLogonEmailExchange:hover, #SignUpWithLogonNameExchange:hover {
-            background-image: url(https://cosunb2c.b2clogin.com/static/tenant/templates/idp_logos/white/local.svg);
-        }
-        #SignUpWithLogonEmailExchange.text-link {
-            background-image: none;
-            background-color: transparent !important;
-        }
-        #SignUpWithLogonEmailExchange.text-link:hover {
-            background-image: none;
-            background-color: transparent !important;
-        }
-    </style>
-    <style id="customstyling">
-      
-      .Password {
-        display: none;
-      }
 
-      #continue {
-        display: none;
-      }
+        .helpLink {
+            display: none;
+        }
 
-      .helpLink {
-        display: none;
-      }
-     
-
-      #working {
-        display: none;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: url("https://robin2807.github.io/working.gif") no-repeat;
-        background-color: white !important;
-        height: 100% !important;
-        background-position: center !important;
-      }
-    </style>
+        #changeClaims {
+            display: none;
+        }
+        </style>
     </head>
     <body>
         <noscript><div id="no_js" ><div class="error_container"><div><h1>We can't sign you in</h1><p>Your browser is currently set to block JavaScript. You need to allow JavaScript to use this service.</p><p>To learn how to allow JavaScript or to find out whether your browser supports JavaScript, check the online help in your web browser.</p></div></div></div></noscript>
@@ -148,7 +134,6 @@
                             <div id="api" data-name="SelfAsserted" role="main">
 
                             </div>
-                            <div id="working"></div>
                         </div>
                     </div>
                 </div>
@@ -157,89 +142,4 @@
     </body>
 </html>
 
-<script>
-  /* 
-  Fields to enter password are hidden default by styling. This fields has to be displayed when a user verified his code.
-
-  1. Set an eventlistener to the verification button to listen if the button is pressed
-  2. When the button is pressed check if the verification code input field is hidden
-  3. If this field is hidden by the API, a user successfully verified  
-  4. The password input fields can be displayed now
-  */
-
-  const changeEmailBtn = document.getElementById("email_ver_but_edit"); // Prod: email_ver_but_edit, test: emailVerificationControl_but_change_claims
-  const emailInputField = document.getElementsByClassName("EmailBox")[0];
-  const passwordElements = document.getElementsByClassName("Password");
-  const passwordContinueBtn = document.getElementById("continue");
-  const userAlreadyExistsMessage = document.getElementById("claimVerificationServerError");
-
-  function displayChangeEmailSection() {
-    emailInputField.style.display = "inline";
-    changeEmailBtn.style.display = "inline";
-    changeEmailBtn.setAttribute("aria-hidden", "false");
-  }
-
-  function hideChangeEmailSection() {
-    emailInputField.style.display = "none";
-    changeEmailBtn.style.display = "none";
-    changeEmailBtn.setAttribute("aria-hidden", "true");
-  }
-
-  function displayPasswordInputSection() {
-    for (let i=0; i < passwordElements.length; i++) {
-      const passwordElement = passwordElements[i];
-      passwordElement.style.display = "inline";
-    }
-
-    passwordContinueBtn.style.display = "inline";
-  }
-
-  function hidePasswordInputSection() {
-    for (let i=0; i < passwordElements.length; i++) {
-      const passwordElement = passwordElements[i];
-      passwordElement.style.display = "none";
-    }
-
-    passwordContinueBtn.style.display = "none";
-  }
-
-  function observeChangeEmailButton() {
-    const changeEmailBtnObserver = new MutationObserver(function(mutations) {
-      const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
-      console.log(ariaHiddenAttribute);
-
-      if (ariaHiddenAttribute == "false") {
-        hideChangeEmailSection();
-        displayPasswordInputSection();
-        observeUserAlreadyExistsMessage()
-        changeEmailBtnObserver.disconnect();
-      }
-    });
-
-    changeEmailBtnObserver.observe(changeEmailBtn, { 
-      attributes: true, 
-      attributeFilter: ['aria-hidden'] 
-    });
-  }
-
-  function observeUserAlreadyExistsMessage() {
-    const userAlreadyExistsMessageObserver = new MutationObserver(function(mutations) {
-      const ariaHiddenAttribute = userAlreadyExistsMessage.getAttribute("aria-hidden");
-      console.log(ariaHiddenAttribute);
-
-      if (ariaHiddenAttribute == "false") {
-        displayChangeEmailSection();
-        hidePasswordInputSection();
-        observeChangeEmailButton();
-        userAlreadyExistsMessageObserver.disconnect();
-      }
-    });
-
-    userAlreadyExistsMessageObserver.observe(userAlreadyExistsMessage, { 
-      attributes: true, 
-      attributeFilter: ['aria-hidden'] 
-    });
-  }
-
-  observeChangeEmailButton();
-</script>
+<script type="JavaScript" src="https://robin2807.github.io/forgot-password.js">
