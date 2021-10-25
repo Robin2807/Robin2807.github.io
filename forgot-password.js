@@ -6,7 +6,6 @@ function displayContinueButton() {
 }
 
 function observeChangeEmailButton() {
-    console.log("observeChangeEmailButton");
     const changeEmailBtnObserver = new MutationObserver(function(mutations) {
         const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
         console.log(ariaHiddenAttribute);
@@ -15,7 +14,12 @@ function observeChangeEmailButton() {
             displayContinueButton();
             changeEmailBtnObserver.disconnect();
         }
-    }
-)};
+    });
+
+    changeEmailBtnObserver.observe(changeEmailBtn, { 
+        attributes: true, 
+        attributeFilter: ['aria-hidden'] 
+    });
+}
 
 observeChangeEmailButton();

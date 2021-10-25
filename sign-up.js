@@ -45,21 +45,21 @@ function hidePasswordInputSection() {
 
 function observeChangeEmailButton() {
     const changeEmailBtnObserver = new MutationObserver(function(mutations) {
-    const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
-    console.log(ariaHiddenAttribute);
+        const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
+        console.log(ariaHiddenAttribute);
 
-    if (ariaHiddenAttribute == "false") {
-        hideChangeEmailSection();
-        displayPasswordInputSection();
-        observeUserAlreadyExistsMessage()
-        changeEmailBtnObserver.disconnect();
-    }
-});
+        if (ariaHiddenAttribute == "false") {
+            hideChangeEmailSection();
+            displayPasswordInputSection();
+            observeUserAlreadyExistsMessage()
+            changeEmailBtnObserver.disconnect();
+        }
+    });
 
-changeEmailBtnObserver.observe(changeEmailBtn, { 
-    attributes: true, 
-    attributeFilter: ['aria-hidden'] 
-});
+    changeEmailBtnObserver.observe(changeEmailBtn, { 
+        attributes: true, 
+        attributeFilter: ['aria-hidden'] 
+    });
 }
 
 function observeUserAlreadyExistsMessage() {
