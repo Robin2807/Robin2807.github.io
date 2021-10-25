@@ -5,12 +5,17 @@ function displayContinueButton() {
     continueBtn.style.display = "inline";
 }
 
+function hideChangeEmailButton() {
+    changeEmailBtn.style.display = "none";
+}
+
 function observeChangeEmailButton() {
     const changeEmailBtnObserver = new MutationObserver(function(mutations) {
         const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
         console.log(ariaHiddenAttribute);
 
         if (ariaHiddenAttribute == "false") {
+            hideChangeEmailButton();
             displayContinueButton();
             changeEmailBtnObserver.disconnect();
         }
