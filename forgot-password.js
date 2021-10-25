@@ -29,4 +29,19 @@ function observeChangeEmailButton() {
     });
 }
 
-observeChangeEmailButton();
+function checkIfObserverNeedsToBeSet() {
+    /* 
+    If the password reset page is loaded for the first time the grower has to verify his email adress.
+    In that case the changeEmailBtn is found and has to be observed.
+    When a user verified his email adress the user flow will be loaded for a second time, but than to fill in a new password.
+    In that case no changeEmailBtn will be found and the continue button has to be displayed.
+    */
+
+    if (changeEmailBtn != null) {
+        observeChangeEmailButton();
+    } else {
+        displayContinueButton();
+    }
+}
+
+checkIfObserverNeedsToBeSet();
