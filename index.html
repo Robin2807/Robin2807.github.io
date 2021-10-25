@@ -119,11 +119,10 @@
                 display: none;
             }
 
+            /* No code received link */
             #attributeList ul li .attrEntry .verificationControlContent .sendNewCode {
                 display: inline;
                 position: absolute;
-                text-align: center;
-                left: 125px;
                 background-color: #FFF;
                 color: blue;
                 border-bottom: 1px solid blue;
@@ -136,16 +135,37 @@
             #emailVerificationControl_but_send_new_code::before {
                 color: #000;
                 position: absolute;
-                margin-left: -125px;
                 pointer-events: none;
+            }
+
+            /* EN */
+            #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(en) {
+                left: 200px;          
             }
 
             #emailVerificationControl_but_send_new_code:lang(en)::before {
                 content: "No code received?";
+                margin-left: -125px;
             }
 
-            #emailVerificationControl_but_send_new_code::before:lang(nl) {
+            /* NL */
+            #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(nl) {
+                left: 200px;          
+            }
+
+            #emailVerificationControl_but_send_new_code:lang(nl)::before {
                 content: "Geen code ontvangen?";
+                margin-left: -125px;
+            }
+
+            /* DE */
+            #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(de) {
+                left: 200px;          
+            }
+
+            #emailVerificationControl_but_send_new_code:lang(nl)::before {
+                content: "Kein Code erhalten?";
+                margin-left: -125px;
             }
         </style>
     </head>
