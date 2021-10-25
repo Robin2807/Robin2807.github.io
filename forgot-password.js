@@ -7,6 +7,7 @@ function displayContinueButton() {
 
 function hideChangeEmailButton() {
     changeEmailBtn.style.display = "none";
+    changeEmailBtn.setAttribute("aria-hidden", "true");
 }
 
 function observeChangeEmailButton() {
