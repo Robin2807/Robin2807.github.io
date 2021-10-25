@@ -31,10 +31,11 @@ function observeChangeEmailButton() {
 
 function checkIfObserverNeedsToBeSet() {
     /* 
-    If the password reset page is loaded for the first time the grower has to verify his email adress.
+    If the password reset user flow is loaded for the first time the grower has to verify his email adress.
     In that case the changeEmailBtn is found and has to be observed.
     When a user verified his email adress the user flow will be loaded for a second time, but than to fill in a new password.
-    In that case no changeEmailBtn will be found and the continue button has to be displayed.
+    In that case no changeEmailBtn will be found, so it doesn't need to be observed. 
+    The continue button must be displayed, so a user can continue after entering a new password.
     */
 
     if (changeEmailBtn != null) {
