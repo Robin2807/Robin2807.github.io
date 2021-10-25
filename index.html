@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://robin2807.github.io/style.css">
+        <link rel="stylesheet" href="https://sacbcb2c.blob.core.windows.net/html/style.css">
         <style id="common">
             @font-face {
                 font-family: 'SegoeUI';
@@ -118,6 +118,14 @@
             .changeClaims {
                 display: none;
             }
+
+            #emailVerificationControl_but_send_new_code::before:lang(en) {
+                content: "No code received? "
+            }
+
+            #emailVerificationControl_but_send_new_code::before:lang(nl) {
+                content: "Geen code ontvangen? "
+            }
         </style>
     </head>
     <body>
@@ -142,4 +150,4 @@
     </body>
 </html>
 
-<script src="https://robin2807.github.io/forgot-password.js"></script>
+<script src="https://sacbcb2c.blob.core.windows.net/html/forgot-password.js"></script>
