@@ -440,7 +440,11 @@ input[type=email], input[type=password], input[type=text] {
     padding: 40px 30px;
     margin: auto;
     height: 100%;
-    background-color: #fff
+    background-color: #fff;
+
+    @media only screen and (max-width: 600px) {
+        padding: 80px 10px;
+    }
 }
 
 .self_asserted_container .row .panel-default .panel-body {

@@ -119,12 +119,33 @@
                 display: none;
             }
 
-            #emailVerificationControl_but_send_new_code::before:lang(en) {
-                content: "No code received? "
+            #emailVerificationControl_but_send_new_code {
+                display: inline;
+                position: absolute;
+                width: fit-content;
+                text-align: center;
+                left: 125px;
+                background-color: #FFF;
+                color: blue;
+                border-bottom: 1px solid blue;
+                border-radius: 0;
+                padding: 0;
+                height: fit-content;                
+            }
+
+            #emailVerificationControl_but_send_new_code::before {
+                color: #000;
+                position: absolute;
+                margin-left: -125px;
+                pointer-events: none;
+            }
+
+            #emailVerificationControl_but_send_new_code:lang(en)::before {
+                content: "No code received?";
             }
 
             #emailVerificationControl_but_send_new_code::before:lang(nl) {
-                content: "Geen code ontvangen? "
+                content: "Geen code ontvangen?";
             }
         </style>
     </head>
