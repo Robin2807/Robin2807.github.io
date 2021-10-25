@@ -150,22 +150,36 @@
 
             /* NL */
             #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(nl) {
-                left: 200px;          
+                left: 190px;          
             }
 
             #emailVerificationControl_but_send_new_code:lang(nl)::before {
                 content: "Geen code ontvangen?";
-                margin-left: -125px;
+                margin-left: -150px;
             }
 
             /* DE */
             #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(de) {
-                left: 200px;          
+                left: 190px;          
             }
 
-            #emailVerificationControl_but_send_new_code:lang(nl)::before {
+            #emailVerificationControl_but_send_new_code:lang(de)::before {
                 content: "Kein Code erhalten?";
-                margin-left: -125px;
+                margin-left: -130px;
+            }
+
+            @media only screen and (max-width: 400px) {
+                #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(en) {
+                    left: 45%;          
+                }
+
+                #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(nl) {
+                    left: 50%;          
+                }   
+
+                #attributeList ul li .attrEntry .verificationControlContent .sendNewCode:lang(de) {
+                    left: 50%;          
+                }
             }
         </style>
     </head>
