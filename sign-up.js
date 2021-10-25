@@ -14,45 +14,45 @@ const passwordContinueBtn = document.getElementById("continue");
 const userAlreadyExistsMessage = document.getElementById("claimVerificationServerError");
 
 function displayChangeEmailSection() {
-emailInputField.style.display = "inline";
-changeEmailBtn.style.display = "inline";
-changeEmailBtn.setAttribute("aria-hidden", "false");
+    emailInputField.style.display = "inline";
+    changeEmailBtn.style.display = "inline";
+    changeEmailBtn.setAttribute("aria-hidden", "false");
 }
 
 function hideChangeEmailSection() {
-emailInputField.style.display = "none";
-changeEmailBtn.style.display = "none";
-changeEmailBtn.setAttribute("aria-hidden", "true");
+    emailInputField.style.display = "none";
+    changeEmailBtn.style.display = "none";
+    changeEmailBtn.setAttribute("aria-hidden", "true");
 }
 
 function displayPasswordInputSection() {
-for (let i=0; i < passwordElements.length; i++) {
-    const passwordElement = passwordElements[i];
-    passwordElement.style.display = "inline";
-}
+    for (let i=0; i < passwordElements.length; i++) {
+        const passwordElement = passwordElements[i];
+        passwordElement.style.display = "inline";
+    }
 
-passwordContinueBtn.style.display = "inline";
+    passwordContinueBtn.style.display = "inline";
 }
 
 function hidePasswordInputSection() {
-for (let i=0; i < passwordElements.length; i++) {
-    const passwordElement = passwordElements[i];
-    passwordElement.style.display = "none";
-}
+    for (let i=0; i < passwordElements.length; i++) {
+        const passwordElement = passwordElements[i];
+        passwordElement.style.display = "none";
+    }
 
-passwordContinueBtn.style.display = "none";
+    passwordContinueBtn.style.display = "none";
 }
 
 function observeChangeEmailButton() {
-const changeEmailBtnObserver = new MutationObserver(function(mutations) {
+    const changeEmailBtnObserver = new MutationObserver(function(mutations) {
     const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
     console.log(ariaHiddenAttribute);
 
     if (ariaHiddenAttribute == "false") {
-    hideChangeEmailSection();
-    displayPasswordInputSection();
-    observeUserAlreadyExistsMessage()
-    changeEmailBtnObserver.disconnect();
+        hideChangeEmailSection();
+        displayPasswordInputSection();
+        observeUserAlreadyExistsMessage()
+        changeEmailBtnObserver.disconnect();
     }
 });
 
@@ -68,10 +68,10 @@ const userAlreadyExistsMessageObserver = new MutationObserver(function(mutations
     console.log(ariaHiddenAttribute);
 
     if (ariaHiddenAttribute == "false") {
-    displayChangeEmailSection();
-    hidePasswordInputSection();
-    observeChangeEmailButton();
-    userAlreadyExistsMessageObserver.disconnect();
+        displayChangeEmailSection();
+        hidePasswordInputSection();
+        observeChangeEmailButton();
+        userAlreadyExistsMessageObserver.disconnect();
     }
 });
 
