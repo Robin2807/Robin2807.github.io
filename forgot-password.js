@@ -39,10 +39,8 @@ function checkIfObserverNeedsToBeSet() {
     */
 
     if (changeEmailBtn != null) {
-        console.log("change email button")
         observeChangeEmailButton();
     } else {
-        console.log("display continue button")
         displayContinueButton();
     }
 }
