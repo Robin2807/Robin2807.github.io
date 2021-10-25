@@ -1,5 +1,5 @@
 const continueBtn = document.getElementById("continue");
-const changeEmailBtn = document.getElementById("email_ver_but_edit");
+const changeEmailBtn = document.getElementById("emailVerificationControl_but_change_claims");
 
 function displayContinueButton() {
     continueBtn.style.display = "inline";
