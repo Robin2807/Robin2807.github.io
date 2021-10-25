@@ -6,6 +6,7 @@ function displayContinueButton() {
 }
 
 function observeChangeEmailButton() {
+    console.log("observeChangeEmailButton");
     const changeEmailBtnObserver = new MutationObserver(function(mutations) {
         const ariaHiddenAttribute = changeEmailBtn.getAttribute("aria-hidden");
         console.log(ariaHiddenAttribute);
